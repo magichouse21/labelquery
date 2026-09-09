@@ -16,15 +16,20 @@ SECTIONS = [ #different sections I need to look at that are very important
 ]
 
 def get_data():
-    dataset = []
-    for drug in drugs: 
-        try: 
-            data = requests.get(f'{url}search=openfda.generic_name:"{drug}"&limit=1').json()
-            dataset.append(data)
-        except:
-            print(drug, "did not go through.**********************")
+    dataset = {}
+    temp = {}
+    drug = "atorvastatin"
+#    for drug in drugs: 
+    
+    data = requests.get(f'{url}search=openfda.generic_name:"{drug}"&limit=1').json()
+    for s in range (0, len(SECTIONS)):
+        temp.add[data["results"][0][SECTIONS[s]]]
+    dataset.append(temp)
+    temp = {}
+    
     return dataset
 
-print(get_data()[0])
+
+print(get_data())
 
 
